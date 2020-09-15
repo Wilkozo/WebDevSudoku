@@ -1,204 +1,225 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Sudoku Game</title> <!--Title of the page-->
-<link rel="stylesheet" type="text/css" href="basic.css"
+    <title>Sudoku Game</title> <!--Title of the page-->
+    <link rel="stylesheet" type="text/css" href="basic.css"
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
 </head>
 <style>
-body
-{
-    background-image: url("https://cdn.wallpapersafari.com/8/37/tVBTDl.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
+body { background-image: url("Capture.png"); background-repeat: no-repeat; background-size: cover; }
 </style>
+
+<!-- https://cdn.wallpapersafari.com/8/37/tVBTDl.jpg -->
 
 <body>
 
-    <h1>Sudoku</h1>
+    <h1>Sudoku</h1> <h2>Play To Win</h2>
 
-    <h2>Press X to Play</h2>
+    <button id="New" type="button" class="btn btn-outline-secondary">New Game</button>
+    <button id="Solve" type="button" class="btn btn-outline-secondary">Solve</button>
+    <button id="Check" type="button" class="btn btn-outline-secondary">Check</button>
 
-    <!-- -->
-    <img src = "https://www.w3schools.com/images/picture.jpg" alt = "Mountain">
-    <!--hyper link - to google.com-->
-    <a href = "http://www.google.com">google</a>
 
     <!--Table Example-->
-    <table border="1">
-        <th>1</th> <!--Collumn 01-->
-        <th>2</th> <!--Collumn 02-->
-        <th>3</th> <!--Collumn 03-->
-        <th>4</th> <!--Collumn 04-->
-        <th>5</th> <!--Collumn 05-->
-        <th>6</th> <!--Collumn 06-->
-        <th>7</th> <!--Collumn 07-->
-        <th>8</th> <!--Collumn 08-->
-        <th>9</th> <!--Collumn 09-->
+    <div class="table-responsive" border="1">
 
-        <tr><!--Row 01-->
-            <td> </td> 
-            <td> </td>
-            <td> </td>
-            
-            <td> </td> 
-            <td> </td>
-            <td> </td>
-            
-            <td> </td> 
-            <td> </td>
-            <td> </td>
+        <!-- Top Section -->
+
+        <tr>
+            <th><input id="00" type="number" min="1" max="9" oninput="updateInput('00')"></input></th> <!--Collumn 01-->
+            <th><input id="01" type="number" min="1" max="9" oninput="updateInput('01')"></input></th> <!--Collumn 02-->
+            <th><input id="02" type="number" min="1" max="9" oninput="updateInput('02')"></input></th> <!--Collumn 03-->
         </tr>
 
-        <tr><!--Row 02-->
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            
-            <td> </td> 
-            <td> </td>
-            <td> </td>
-            
-            <td> </td> 
-            <td> </td>
-            <td> </td>
+        <tr>
+            <th><input id="03" type="number" min="1" max="9" oninput="updateInput('03')"></input></th> <!--Collumn 04-->
+            <th><input id="04" type="number" min="1" max="9" oninput="updateInput('04')"></input></th> <!--Collumn 05-->
+            <th><input id="05" type="number" min="1" max="9" oninput="updateInput('05')"></input></th> <!--Collumn 06-->
         </tr>
 
-        <tr><!--Row 03-->
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            
-            <td> </td> 
-            <td> </td>
-            <td> </td>
-            
-            <td> </td> 
-            <td> </td>
-            <td> </td>
+        <tr>
+            <th><input id="06" type="number" min="1" max="9" oninput="updateInput('06')"></input></th> <!--Collumn 07-->
+            <th><input id="07" type="number" min="1" max="9" oninput="updateInput('07')"></input></th> <!--Collumn 08-->
+            <th><input id="08" type="number" min="1" max="9" oninput="updateInput('08')"></input></th> <!--Collumn 09-->
         </tr>
 
-        <tr><!--Row 04-->
-            <td> </td> 
-            <td> </td>
-            <td> </td>
-            
-            <td> </td> 
-            <td> </td>
-            <td> </td>
-            
-            <td> </td> 
-            <td> </td>
-            <td> </td>
+        <br>
+
+        <tr>
+            <th><input id="10" type="number" min="1" max="9" oninput="updateInput('10')"></input></th> <!--Collumn 11-->
+            <th><input id="11" type="number" min="1" max="9" oninput="updateInput('11')"></input></th> <!--Collumn 12-->
+            <th><input id="12" type="number" min="1" max="9" oninput="updateInput('12')"></input></th> <!--Collumn 13-->
         </tr>
 
-        <tr><!--Row 05-->
-            <td> </td>
-            <td> </td>
-            <td> </td>
-
-            <td> </td> 
-            <td> </td>
-            <td> </td>
-            
-            <td> </td> 
-            <td> </td>
-            <td> </td>
+        <tr>
+            <th><input id="13" type="number" min="1" max="9" oninput="updateInput('13')"></input></th> <!--Collumn 14-->
+            <th><input id="14" type="number" min="1" max="9" oninput="updateInput('14')"></input></th> <!--Collumn 15-->
+            <th><input id="15" type="number" min="1" max="9" oninput="updateInput('15')"></input></th> <!--Collumn 16-->
         </tr>
 
-        <tr><!--Row 06-->
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            
-            <td> </td> 
-            <td> </td>
-            <td> </td>
-            
-            <td> </td> 
-            <td> </td>
-            <td> </td>
+        <tr>
+            <th><input id="16" type="number" min="1" max="9" oninput="updateInput('16')"></input></th> <!--Collumn 17-->
+            <th><input id="17" type="number" min="1" max="9" oninput="updateInput('17')"></input></th> <!--Collumn 18-->
+            <th><input id="18" type="number" min="1" max="9" oninput="updateInput('18')"></input></th> <!--Collumn 19-->
         </tr>
 
-        <tr><!--Row 07-->
-            <td> </td> 
-            <td> </td>
-            <td> </td>
-            
-            <td> </td> 
-            <td> </td>
-            <td> </td>
-            
-            <td> </td> 
-            <td> </td>
-            <td> </td>
+        <br>
+
+        <tr>
+            <th><input id="20" type="number" min="1" max="9" oninput="updateInput('20')"></input></th> <!--Collumn 01-->
+            <th><input id="21" type="number" min="1" max="9" oninput="updateInput('21')"></input></th> <!--Collumn 02-->
+            <th><input id="22" type="number" min="1" max="9" oninput="updateInput('22')"></input></th> <!--Collumn 03-->
         </tr>
 
-        <tr><!--Row 08-->
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            
-            <td> </td> 
-            <td> </td>
-            <td> </td>
-            
-            <td> </td> 
-            <td> </td>
-            <td> </td>
+        <tr>
+            <th><input id="23" type="number" min="1" max="9" oninput="updateInput('23')"></input></th> <!--Collumn 04-->
+            <th><input id="24" type="number" min="1" max="9" oninput="updateInput('24')"></input></th> <!--Collumn 05-->
+            <th><input id="25" type="number" min="1" max="9" oninput="updateInput('25')"></input></th> <!--Collumn 06-->
         </tr>
 
-        <tr><!--Row 09-->
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            
-            <td> </td> 
-            <td> </td>
-            <td> </td>
-            
-            <td> </td> 
-            <td> </td>
-            <td> </td>
+        <tr>
+            <th><input id="26" type="number" min="1" max="9" oninput="updateInput('26')"></input></th> <!--Collumn 07-->
+            <th><input id="27" type="number" min="1" max="9" oninput="updateInput('27')"></input></th> <!--Collumn 08-->
+            <th><input id="28" type="number" min="1" max="9" oninput="updateInput('28')"></input></th> <!--Collumn 09-->
         </tr>
 
-    </table>
+        <br>
 
-    <h3>Score: 100</h3>
+        <!-- Mid Section -->
 
-    <!--Field Entries Input-->
-    <input type="text"><p></p>
-    <input type="date"><p></p>
-    <input type="color"><p></p>
-    <input type="file"><p></p>
-    <input type="checkbox"><p></p>
-    <input type="radio"><p></p>
-    <input type="password" maxlength="4"><p></p>
+        <tr>
+            <th><input id="30" type="number" min="1" max="9" oninput="updateInput('30')"></input></th> <!--Collumn 01-->
+            <th><input id="31" type="number" min="1" max="9" oninput="updateInput('31')"></input></th> <!--Collumn 02-->
+            <th><input id="32" type="number" min="1" max="9" oninput="updateInput('32')"></input></th> <!--Collumn 03-->
+        </tr>
 
+        <tr>
+            <th><input id="33" type="number" min="1" max="9" oninput="updateInput('33')"></input></th> <!--Collumn 04-->
+            <th><input id="34" type="number" min="1" max="9" oninput="updateInput('34')"></input></th> <!--Collumn 05-->
+            <th><input id="35" type="number" min="1" max="9" oninput="updateInput('35')"></input></th> <!--Collumn 06-->
+        </tr>
 
-    <p>Pick your favourite color</p>
-    <select name = "color">
-        <option>Green</option>
-        <option>Lime</option>
-        <option>Chartreuse</option>
-    </select>
+        <tr>
+            <th><input id="36" type="number" min="1" max="9" oninput="updateInput('36')"></input></th> <!--Collumn 07-->
+            <th><input id="37" type="number" min="1" max="9" oninput="updateInput('37')"></input></th> <!--Collumn 08-->
+            <th><input id="38" type="number" min="1" max="9" oninput="updateInput('38')"></input></th> <!--Collumn 09-->
+        </tr>
 
-    <!--Comment Line Example-->
+        <br>
 
-<!--
-//                          //
-    Block Comment Example
-//                          //
--->
+        <tr>
+            <th><input id="40" type="number" min="1" max="9" oninput="updateInput('40')"></input></th> <!--Collumn 01-->
+            <th><input id="41" type="number" min="1" max="9" oninput="updateInput('41')"></input></th> <!--Collumn 02-->
+            <th><input id="42" type="number" min="1" max="9" oninput="updateInput('42')"></input></th> <!--Collumn 03-->
+        </tr>
+
+        <tr>
+            <th><input id="43" type="number" min="1" max="9" oninput="updateInput('43')"></input></th> <!--Collumn 04-->
+            <th><input id="44" type="number" min="1" max="9" oninput="updateInput('44')"></input></th> <!--Collumn 05-->
+            <th><input id="45" type="number" min="1" max="9" oninput="updateInput('45')"></input></th> <!--Collumn 06-->
+        </tr>
+
+        <tr>
+            <th><input id="46" type="number" min="1" max="9" oninput="updateInput('46')"></input></th> <!--Collumn 07-->
+            <th><input id="47" type="number" min="1" max="9" oninput="updateInput('47')"></input></th> <!--Collumn 08-->
+            <th><input id="48" type="number" min="1" max="9" oninput="updateInput('48')"></input></th> <!--Collumn 09-->
+        </tr>
+
+        <br>
+
+        <tr>
+            <th><input id="50" type="number" min="1" max="9" oninput="updateInput('50')"></input></th> <!--Collumn 01-->
+            <th><input id="51" type="number" min="1" max="9" oninput="updateInput('51')"></input></th> <!--Collumn 02-->
+            <th><input id="52" type="number" min="1" max="9" oninput="updateInput('52')"></input></th> <!--Collumn 03-->
+        </tr>
+
+        <tr>
+            <th><input id="53" type="number" min="1" max="9" oninput="updateInput('53')"></input></th> <!--Collumn 04-->
+            <th><input id="54" type="number" min="1" max="9" oninput="updateInput('54')"></input></th> <!--Collumn 05-->
+            <th><input id="55" type="number" min="1" max="9" oninput="updateInput('55')"></input></th> <!--Collumn 06-->
+        </tr>
+
+        <tr>
+            <th><input id="56" type="number" min="1" max="9" oninput="updateInput('56')"></input></th> <!--Collumn 07-->
+            <th><input id="57" type="number" min="1" max="9" oninput="updateInput('57')"></input></th> <!--Collumn 08-->
+            <th><input id="58" type="number" min="1" max="9" oninput="updateInput('58')"></input></th> <!--Collumn 09-->
+        </tr>
+
+        <br>
+        <!-- Bottom Section -->
+
+        <tr>
+            <th><input id="60" type="number" min="1" max="9" oninput="updateInput('60')"></input></th> <!--Collumn 01-->
+            <th><input id="61" type="number" min="1" max="9" oninput="updateInput('61')"></input></th> <!--Collumn 02-->
+            <th><input id="62" type="number" min="1" max="9" oninput="updateInput('62')"></input></th> <!--Collumn 03-->
+        </tr>
+
+        <tr>
+            <th><input id="63" type="number" min="1" max="9" oninput="updateInput('63')"></input></th> <!--Collumn 04-->
+            <th><input id="64" type="number" min="1" max="9" oninput="updateInput('64')"></input></th> <!--Collumn 05-->
+            <th><input id="65" type="number" min="1" max="9" oninput="updateInput('65')"></input></th> <!--Collumn 06-->
+        </tr>
+
+        <tr>
+            <th><input id="66" type="number" min="1" max="9" oninput="updateInput('66')"></input></th> <!--Collumn 07-->
+            <th><input id="67" type="number" min="1" max="9" oninput="updateInput('67')"></input></th> <!--Collumn 08-->
+            <th><input id="68" type="number" min="1" max="9" oninput="updateInput('68')"></input></th> <!--Collumn 09-->
+        </tr>
+
+        <br>
+
+        <tr>
+            <th><input id="70" type="number" min="1" max="9" oninput="updateInput('70')"></input></th> <!--Collumn 01-->
+            <th><input id="71" type="number" min="1" max="9" oninput="updateInput('71')"></input></th> <!--Collumn 02-->
+            <th><input id="72" type="number" min="1" max="9" oninput="updateInput('72')"></input></th> <!--Collumn 03-->
+        </tr>
+
+        <tr>
+            <th><input id="73" type="number" min="1" max="9" oninput="updateInput('73')"></input></th> <!--Collumn 04-->
+            <th><input id="74" type="number" min="1" max="9" oninput="updateInput('74')"></input></th> <!--Collumn 05-->
+            <th><input id="75" type="number" min="1" max="9" oninput="updateInput('75')"></input></th> <!--Collumn 06-->
+        </tr>
+
+        <tr>
+            <th><input id="76" type="number" min="1" max="9" oninput="updateInput('76')"></input></th> <!--Collumn 07-->
+            <th><input id="77" type="number" min="1" max="9" oninput="updateInput('77')"></input></th> <!--Collumn 08-->
+            <th><input id="78" type="number" min="1" max="9" oninput="updateInput('78')"></input></th> <!--Collumn 09-->
+        </tr>
+
+        <br>
+
+        <tr>
+            <th><input id="80" type="number" min="1" max="9" oninput="updateInput('80')"></input></th> <!--Collumn 01-->
+            <th><input id="81" type="number" min="1" max="9" oninput="updateInput('81')"></input></th> <!--Collumn 02-->
+            <th><input id="82" type="number" min="1" max="9" oninput="updateInput('82')"></input></th> <!--Collumn 03-->
+        </tr>
+
+        <tr>
+            <th><input id="83" type="number" min="1" max="9" oninput="updateInput('83')"></input></th> <!--Collumn 04-->
+            <th><input id="84" type="number" min="1" max="9" oninput="updateInput('84')"></input></th> <!--Collumn 05-->
+            <th><input id="85" type="number" min="1" max="9" oninput="updateInput('85')"></input></th> <!--Collumn 06-->
+        </tr>
+
+        <tr>
+            <th><input id="86" type="number" min="1" max="9" oninput="updateInput('86')"></input></th> <!--Collumn 07-->
+            <th><input id="87" type="number" min="1" max="9" oninput="updateInput('87')"></input></th> <!--Collumn 08-->
+            <th><input id="88" type="number" min="1" max="9" oninput="updateInput('88')"></input></th> <!--Collumn 09-->
+        </tr>
+
+        </table>
+
+        <!-- Scr attribute not type-->
+        <script src="jsBasic.js"></script>
+
 </body>
 </html>
 
 
-<title>JS Basic</title>
-<!-- Scr attribute not type-->
-<script src="jsBasic.js"></script>
 
-<title>DOM Basic</title>
-<!-- Scr attribute not type-->
-<script src="domBasic.js"></script>
