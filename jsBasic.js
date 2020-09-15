@@ -35,8 +35,10 @@ Board_02 = [
 
 function ClearBoard()
 {
-    for (var i = 0; i < 9; i++) {
-        for (var j = 0; j < 9; j++) {
+    for (var i = 0; i < 9; i++) 
+    {
+        for (var j = 0; j < 9; j++) 
+        {
             Board_01[i][j] = Z; // Sets to Zero
         }
     }
@@ -44,41 +46,49 @@ function ClearBoard()
 
 function DisplayBoard() 
 {
-    for (var i = 0; i < 9; i++) {
-        for (var j = 0; j < 9; j++) {
+    for (var i = 0; i < 9; i++) 
+    {
+        for (var j = 0; j < 9; j++) 
+        {
             $("#" + i + j).val(Board_01[i][j]);
         }
     }
 }
 
-function CheckBoardSolvable() {
-    for (var i = 0; i < 9; i++) {
-        for (var j = 0; j < 9; j++) {
-            if (Board_01[j][i] != 0) {
-                if (CheckNumber(i, j, Board_01[j][i]) == false) {
-                    return false;
-                }
+function CheckBoardSolvable() 
+{
+    for (var i = 0; i < 9; i++) 
+    {
+        for (var j = 0; j < 9; j++) 
+        {
+            if (Board_01[j][i] != 0) 
+            {
+                if (CheckNumber(i, j, Board_01[j][i]) == false) 
+                { return false; }
             }
         }
     }
 }
 
-function SeedBoard() {
-
-    for (var i = 0; i < 9; i++) {
+function SeedBoard() 
+{
+    for (var i = 0; i < 9; i++) 
+    {
 
         let x = Math.floor(Math.random() * 9);
         let y = Math.floor(Math.random() * 9);
         let number = Math.floor(Math.random() * 9) + 1;
 
-        if (CheckNumber(x, y, number)) {
+        if (CheckNumber(x, y, number)) 
+        {
             Board_01[y][x] = number;
         }
     }
 
     Board_02 = Board_01;
 
-    if (CheckBoardSolvable()) {
+    if (CheckBoardSolvable()) 
+    {
         ClearBoard()
         SeedBoard()
     }
@@ -93,37 +103,42 @@ function CheckNumber(x, y, number)
 
     for(var i = 0; i < 9; i++)
     {
-        if (Board_01[i][x] == number) {
-            return false;
-        }
+        if (Board_01[i][x] == number) 
+        { return false; }
     }
 
-    for (var j = 0; j < 9; j++) {
-        if (Board_01[y][j] == number) {
-            return false;
-        }
+    for (var j = 0; j < 9; j++) 
+    {
+        if (Board_01[y][j] == number) 
+        { return false; }
     }
     
     let Lx = 0;
     let Ly = 0;
 
-    if (x < 3) {
+    if (x < 3) 
+    {
         Lx = 0;
     }
-    else if (x < 6) {
+    else if (x < 6) 
+    {
         Lx = 3;
     }
-    else {
+    else 
+    {
         Lx = 6;
     }
 
-    if (y < 3) {
+    if (y < 3) 
+    {
         Ly = 0;
     }
-    else if (y < 6) {
+    else if (y < 6) 
+    {
         Ly = 3;
     }
-    else {
+    else 
+    {
         Ly = 6;
     }
 
@@ -141,18 +156,19 @@ function CheckNumber(x, y, number)
     return true;
 }
 
-function BoardSolved() {
-    for (var i = 0; i < 9; i++) {
-        for (var j = 0; j < 9; j++) {
-            if (Board_01[i][j] == 0) {
-                return false;
-            }//CheckNumber(i, j, Board_01[i][j]) == false)
-
+function BoardSolved() 
+{
+    for (var i = 0; i < 9; i++) 
+    {
+        for (var j = 0; j < 9; j++) 
+        {
+            if (Board_01[i][j] == 0) 
+            { return false; }
         }
     }
-    if (SolveBoard() == false) {
-      return false;
-    }
+    if (SolveBoard() == false) 
+    { return false; }
+    
     return true;
 }
 
@@ -162,6 +178,7 @@ function SolveBoard()
     {
         for (var j = 0; j < 9; j++) 
         {
+            // If slot is empty
             if (Board_01[j][i] == 0) 
             {
                 for (var n = 1; n < 10; n++)
@@ -190,12 +207,12 @@ function SolveBoard()
 }
 
 
-function updateInput(position) {
+function updateInput(position) 
+{
 
     let val = $("#" + position).val();
-    if (val.length > 1) {
-        val = val[1];
-    }
+    if (val.length > 1) 
+    { val = val[1]; }
     Board_01[position[0]][position[1]] = val;
     $("#" + position).val(val);
 }
